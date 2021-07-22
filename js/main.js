@@ -54,3 +54,67 @@ var valor = 12;
 
  const {name: meleca, idade} = obj;
  console.log(meleca,idade);
+
+
+ const carro = {
+    roda: Symbol('cromada')
+ };
+ Object.getOwnPropertySymbols(carro);
+ console.log(carro);
+ Object.keys(carro);
+
+//utilizando o Symbol.iterator em Array
+ const car = ['volante','roda','banco'];
+ const caminhao = car[Symbol.iterator]();
+ console.log(caminhao.next());
+ console.log(caminhao.next());
+ console.log(caminhao.next());
+ console.log(caminhao.next());
+
+ for (const value of caminhao) {
+    console.log(value);
+ }
+
+ //Aplicando um Symbol.iterator à um objeto para que ele possa receber funções de arrays
+ // podendo aplicar o for of, usar o rest, spreed
+ const vaca = {
+   valores: ['bife','costela','lombo'],
+   [Symbol.iterator](){
+      let i = 0;
+      return{
+         next:()=>{
+            i++;
+            return{
+               value:this.valores[i - 1],
+               done: i > this.valores.length
+            };
+         }
+      };
+   }
+ }
+
+ const churrasco = vaca[Symbol.iterator]();
+ console.log(churrasco.next());
+ console.log(churrasco.next());
+
+ for(let value of vaca){
+    console.log(value);
+ }
+
+ // Generator 
+// da o poder de pausa para a função, mas precisa ter uma iteração com 
+//  uma variável e essa variável tem que ser chamada com o .net(), e cada chamada do .net() a pausa é executada
+ function* hello(){
+   console.log('oi');
+   yield;
+
+   console.log('como');
+   yield;
+
+   console.log('vai?');
+ }
+
+ const it = hello();
+ console.log(it.next());
+ console.log(it.next());
+ console.log(it.next());
