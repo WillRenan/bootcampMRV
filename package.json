@@ -1,0 +1,29 @@
+{
+  "name": "teste-aula",
+  "version": "1.0.0",
+  "description": "aulas-bootcamp-dio-mrv",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WillRenan/bootcampMRV.git"
+  },
+  "keywords": [
+    "bootcamp",
+    "MRV"
+  ],
+  "author": "willianRenanRodrigues",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WillRenan/bootcampMRV/issues"
+  },
+  "homepage": "https://github.com/WillRenan/bootcampMRV#readme",
+  "devDependencies": {
+    "mocha": "^9.0.2"
+  }
+}
