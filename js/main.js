@@ -118,3 +118,35 @@ var valor = 12;
  console.log(it.next());
  console.log(it.next());
  console.log(it.next());
+
+
+ //Promise
+
+ const  promessa = () => new Promise((resolve, reject)=>{
+    
+   setTimeout(() =>{
+     /*  console.log('meleca') */
+      resolve('meleca');
+   },1500)
+ }) ;
+ 
+ 
+ const promessa2 = () => new Promise((response,reject)=>{
+   setTimeout(()=>{
+      response(' de Nariz');
+   },1000);
+ });
+
+Promise.race([promessa(),promessa2()]).then(data => console.log(data.toString(' '))); //retorna a promise que resolver primeiro
+Promise.all([promessa(),promessa2()]).then(data => console.log(data.toString(' '))); //executando as duas promises ao mesmo tempo
+
+ promessa().then(data =>{ console.log(data); return promessa2()})
+         .then(data2 => console.log(data2.split('')))
+         .catch(error => console.log(error));
+
+
+// Requisição Fetch
+const url = 'https://pokeapi.co/api/v2/pokemon/ditto';
+fetch(url)
+   .then(response => response.json())
+   .then(data => console.log(data));
